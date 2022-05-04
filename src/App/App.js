@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import styles from "./App.module.css";
-import Card from "../Card/Card";
-import Filter from "../Filter/Filter";
+import CardList from "../Component/CardList/CardList";
+import Filter from "../Component/Filter/Filter";
 
 const App = () => {
   //const inputEL = useRef(null);
@@ -98,7 +98,7 @@ const App = () => {
       <div className={cardsToggle ? styles.show : styles.hide}>
         <Filter filteration={filterNames}></Filter>
 
-        <Card arrayCard={namesHandler()} deleteFunc={deleteHandler} />
+        <CardList arrayCard={namesHandler()} deleteFunc={deleteHandler} />
       </div>
     </div>
   );
