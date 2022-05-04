@@ -1,3 +1,4 @@
 # learn-react-essentials
 
-This repo for learning ReactJs, and the course I'm following in this repo for Kimz Codes
+This is a collection of React.js tutorials for beginners.
+In this repository, I follow the [kimz codes](https://www.youtube.com/playlist?list=PLejc1JbD4ZFSaQIFNstRIrbm_fqb12Q59)
