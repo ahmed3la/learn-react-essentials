@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./App.module.css";
 import CardList from "../Component/CardList/CardList";
 import Filter from "../Component/Filter/Filter";
+import Modal from "../Component/Modal/Modal";
 
 const App = () => {
   //const inputEL = useRef(null);
@@ -90,7 +91,8 @@ const App = () => {
 
   return (
     <div className={styles.mainContaner}>
-      <h1>Boys Data</h1>
+      <Modal />
+      <h1>List of Data</h1>
       <button style={{ marginBottom: "20px" }} onClick={toggleHandler}>
         {cardsToggle ? "Hide Names" : "Show Names"}
       </button>
