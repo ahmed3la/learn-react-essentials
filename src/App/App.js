@@ -9,6 +9,7 @@ const App = () => {
 
   const [cardsToggle, setCardToggle] = useState(true);
   const [filter, setFilter] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const [state, setState] = useState([
     {
       id: 1,
@@ -91,11 +92,31 @@ const App = () => {
 
   return (
     <div className={styles.mainContaner}>
-      <Modal />
+      <Modal
+        show={showModal}
+        closeModal={() => {
+          setShowModal(false);
+        }}
+      />
       <h1>List of Data</h1>
-      <button style={{ marginBottom: "20px" }} onClick={toggleHandler}>
-        {cardsToggle ? "Hide Names" : "Show Names"}
-      </button>
+      <div style={{ display: "flex", marginBottom: "10px" }}>
+        <button
+          style={{ marginRight: "20px" }}
+          onClick={toggleHandler}
+          className={styles.button}
+        >
+          {cardsToggle ? "Hide Names" : "Show Names"}
+        </button>
+
+        <button
+          className={styles.button}
+          onClick={() => {
+            setShowModal(true);
+          }}
+        >
+          New Record
+        </button>
+      </div>
 
       <div className={cardsToggle ? styles.show : styles.hide}>
         <Filter filteration={filterNames}></Filter>
