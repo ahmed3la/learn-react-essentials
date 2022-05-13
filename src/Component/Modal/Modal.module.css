@@ -6,20 +6,55 @@
     right: 0;
     bottom: 0;
     background-color: black;
-    opacity: 0.8;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+}
 
+.showBackDrop {
+    visibility: visible;
+    opacity: 0.8;
 }
 
 .overlay {
     z-index: 1500;
     position: absolute;
-    height: 500px;
+    padding: 20px;
     width: 30%;
     top: 50%;
     left: 50%;
-    background-color: #ffffff;
     transform: translate(-50%, -50%);
     /* margin-top: -250px;
     margin-left: -15%; */
+    background-color: #ffffff;
     border-radius: 20px;
+    visibility: hidden;
+    transition: visibility 0.1s;
+}
+
+
+.showOverlay {
+    visibility: visible;
+}
+
+.control {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.control label {
+    font-weight: bold;
+    color: #212529;
+}
+
+.control input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    color: #495057;
+    font-size: 15px;
 }

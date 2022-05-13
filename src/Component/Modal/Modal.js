@@ -2,25 +2,35 @@ import { Fragment } from "react";
 import ReactDOM from "react-dom";
 import styles from "./Modal.module.css";
 
-const BackDrop = ({ close }) => (
-  <div className={styles.backDrop} onClick={close}></div>
+const BackDrop = ({ close, show }) => (
+  <div
+    className={`${styles.backDrop} ${show ? styles.showBackDrop : null}`}
+    onClick={close}
+  ></div>
 );
 
-const Overlay = () => <div className={styles.overlay}></div>;
+const Overlay = ({ show }) => (
+  <div className={`${styles.overlay} ${show ? styles.showOverlay : null}`}>
+    <form>
+      <div className={styles.control}>
+        <label htmlFor="name">Name</label>
+        <input type="name" placeholder="Enter name"></input>
+      </div>
+    </form>
+  </div>
+);
 
 const Modal = ({ show, closeModal }) => {
   return (
-    show && (
-      <Fragment>
-        {ReactDOM.createPortal(
-          <Fragment>
-            <BackDrop close={closeModal} />
-            <Overlay />
-          </Fragment>,
-          document.getElementById("modal")
-        )}
-      </Fragment>
-    )
+    <Fragment>
+      {ReactDOM.createPortal(
+        <Fragment>
+          <BackDrop close={closeModal} show={show} />
+          <Overlay show={show} />
+        </Fragment>,
+        document.getElementById("modal")
+      )}
+    </Fragment>
   );
 };
 
