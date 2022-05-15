@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import ReactDOM from "react-dom";
 import styles from "./Modal.module.css";
-import Controller from "../Layout/Controller";
+import Form from "../Layout/Form";
 
 const BackDrop = ({ close, show }) => (
   <div
@@ -13,10 +13,10 @@ const BackDrop = ({ close, show }) => (
 const Overlay = ({ show }) => (
   <div className={`${styles.overlay} ${show ? styles.showOverlay : null}`}>
     <form>
-      <Controller>
+      <Form.Controller>
         <label htmlFor="name">Name</label>
         <input type="name" placeholder="Enter name"></input>
-      </Controller>
+      </Form.Controller>
     </form>
   </div>
 );

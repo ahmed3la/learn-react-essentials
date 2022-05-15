@@ -3,6 +3,7 @@ import styles from "./App.module.css";
 import CardList from "../Component/CardList/CardList";
 import Filter from "../Component/Filter/Filter";
 import Modal from "../Component/Modal/Modal";
+import Button from "../Component/Layout/Button";
 
 const App = () => {
   //const inputEL = useRef(null);
@@ -100,22 +101,18 @@ const App = () => {
       />
       <h1>List of Data</h1>
       <div style={{ display: "flex", marginBottom: "10px" }}>
-        <button
-          style={{ marginRight: "20px" }}
-          onClick={toggleHandler}
-          className={styles.button}
-        >
+        <Button onClick={toggleHandler} style={{ marginRight: "20px" }}>
           {cardsToggle ? "Hide Names" : "Show Names"}
-        </button>
+        </Button>
 
-        <button
-          className={styles.button}
+        <Button
+          style={{ marginRight: "20px" }}
           onClick={() => {
             setShowModal(true);
           }}
         >
           New Record
-        </button>
+        </Button>
       </div>
 
       <div className={cardsToggle ? styles.show : styles.hide}>
