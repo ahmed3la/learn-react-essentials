@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import styles from "./App.module.css";
 import CardList from "../Component/CardList/CardList";
-import Filter from "../Component/Filter/Filter";
+import FilterInput from "../Component/FilterInput/FilterInput";
 import Modal from "../Component/Modal/Modal";
 import Button from "../Component/Layout/Button";
+import AddUser from "../Component/AddUser/AddUser";
 
 const App = () => {
   //const inputEL = useRef(null);
@@ -92,35 +93,39 @@ const App = () => {
   };
 
   return (
-    <div className={styles.mainContaner}>
+    <Fragment>
+      <div className={styles.mainContaner}>
+        <h1>List of Data</h1>
+        <div style={{ display: "flex", marginBottom: "10px" }}>
+          <Button onClick={toggleHandler} style={{ marginRight: "20px" }}>
+            {cardsToggle ? "Hide Names" : "Show Names"}
+          </Button>
+
+          <Button
+            style={{ marginRight: "20px" }}
+            onClick={() => {
+              setShowModal(true);
+            }}
+          >
+            New Record
+          </Button>
+        </div>
+
+        <div className={cardsToggle ? styles.show : styles.hide}>
+          <FilterInput filteration={filterNames}></FilterInput>
+
+          <CardList arrayCard={namesHandler()} deleteFunc={deleteHandler} />
+        </div>
+      </div>
       <Modal
         show={showModal}
         closeModal={() => {
           setShowModal(false);
         }}
-      />
-      <h1>List of Data</h1>
-      <div style={{ display: "flex", marginBottom: "10px" }}>
-        <Button onClick={toggleHandler} style={{ marginRight: "20px" }}>
-          {cardsToggle ? "Hide Names" : "Show Names"}
-        </Button>
-
-        <Button
-          style={{ marginRight: "20px" }}
-          onClick={() => {
-            setShowModal(true);
-          }}
-        >
-          New Record
-        </Button>
-      </div>
-
-      <div className={cardsToggle ? styles.show : styles.hide}>
-        <Filter filteration={filterNames}></Filter>
-
-        <CardList arrayCard={namesHandler()} deleteFunc={deleteHandler} />
-      </div>
-    </div>
+      >
+        <AddUser></AddUser>
+      </Modal>
+    </Fragment>
   );
 };
 
