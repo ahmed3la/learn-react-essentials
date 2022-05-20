@@ -69,6 +69,11 @@ const App = () => {
     },
   ]);
 
+  const addNewUserDataHandller = (data) => {
+    setState((prevState) => setState([...prevState, data]));
+    console.log(data);
+  };
+
   const deleteHandler = (e, id) => {
     //const deleteOperation = state.filter((item, i) => i !== index);
     //setState(deleteOperation);
@@ -123,7 +128,12 @@ const App = () => {
           setShowModal(false);
         }}
       >
-        <AddUser></AddUser>
+        <AddUser
+          addNewUserDataHandller={addNewUserDataHandller}
+          closeModal={() => {
+            setShowModal(false);
+          }}
+        ></AddUser>
       </Modal>
     </Fragment>
   );
